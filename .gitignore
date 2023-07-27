@@ -1,0 +1,12 @@
+certs
+dist
+node_modules
+build
+docs/_build
+*egg-info
+/**/__pycache__
+**/.~lock*
+.vscode
+.idea
+venv*
+logs
