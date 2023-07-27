@@ -147,7 +147,7 @@ setup(
     author=about['__author__'],
     author_email=about['__author_email__'],
     url=about['__url__'],
-    packages=['ufo', 'pyfi.tests', 'pyfi.api'],
+    packages=['ufo', 'ufo.tests', 'ufo.api'],
     include_package_data=True,
     python_requires=">=3.10",
     install_requires=[

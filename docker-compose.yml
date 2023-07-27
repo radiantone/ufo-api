@@ -7,13 +7,11 @@ services:
       context: .
       dockerfile: docker/Dockerfile.api
     container_name: api
-    image: ufo/api:local
-    environment:
-      - "UFO_DATA_URL=http://......"
+    image: ufo/api:latest
+    env_file:
+      - conf/ufo.env
     ports:
       - 8000:8003
-    profiles:
-      - api
     volumes:
       - ./conf/supervisord-agent.conf:/etc/supervisor/conf.d/supervisord.conf
 
@@ -29,7 +27,7 @@ services:
         - mongodb_data_container:/data/db
 
   nginx:
-    image: ufo/nginx:local
+    image: ufo/nginx:latest
     container_name: nginx
     build:
       context: .

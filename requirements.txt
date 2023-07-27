@@ -20,6 +20,7 @@ platformdirs==3.9.1
 pycodestyle==2.10.0
 pyflakes==3.0.1
 Pygments==2.15.1
+python-dotenv==1.0.0
 requests==2.31.0
 snowballstemmer==2.2.0
 Sphinx==7.1.0
