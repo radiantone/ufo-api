@@ -9,6 +9,9 @@ Documentation Outline
    :caption: Introduction
    :maxdepth: 2
 
+.. click:: ufo.cli:cli
+   :prog: ufo
+   :show-nested:
 
 
 Indices and tables

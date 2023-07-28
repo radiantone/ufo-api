@@ -11,9 +11,10 @@ services:
     env_file:
       - conf/ufo.env
     ports:
-      - 8000:8003
+      - 8001:8001
     volumes:
       - ./conf/supervisord-agent.conf:/etc/supervisor/conf.d/supervisord.conf
+      - ./logs:/opt/ufo/logs
 
   mongodb:
       image: mongo:latest

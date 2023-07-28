@@ -3,12 +3,8 @@ black = black --target-version py39 ufo
 isort = isort --profile black ufo
 flake8 = flake8 --ignore=E203,F401,E402,F841,E501,E722,W503 ufo
 
-.PHONY: depends
-depends:
-	./bin/depends.sh
-
 .PHONY: init
-init: depends
+init:
 	echo "Setting up virtual environment in venv/"
 	python3 -m venv venv
 	echo "Virtual environment complete."
@@ -30,7 +26,7 @@ lint:
 	$(black) --check --diff
 
 .PHONY: install
-install: depends init
+install: init
 	pip install -r requirements.txt
 	python setup.py install
 	python setup.py clean
@@ -54,9 +50,14 @@ stop:
 refresh: stop
 	@./bin/docker-refresh.sh
 
+.PHONY: docs-nobrowse
+docs-nobrowse:
+	make -C docs html
+
 .PHONY: docs
 docs:
 	make -C docs html
+	google-chrome docs/_build/html/index.html
 
 .PHONY: clean
 clean:
@@ -70,5 +71,5 @@ build:
 	docker compose build
 
 .PHONY: all
-all: format lint docs install
+all: format lint docs-nobrowse install stop build up
 	git status
