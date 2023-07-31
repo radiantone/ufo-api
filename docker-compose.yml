@@ -15,6 +15,18 @@ services:
     volumes:
       - ./conf/supervisord-agent.conf:/etc/supervisor/conf.d/supervisord.conf
       - ./logs:/opt/ufo/logs
+      - ./logs/cron.log:/var/log/cron.log
+
+  scrape:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.scrape
+    container_name: scrape
+    image: ufo/scrape:latest
+    env_file:
+      - conf/ufo.env
+    links:
+      - mongodb
 
   mongodb:
       image: mongo:latest
