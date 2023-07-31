@@ -3,7 +3,6 @@ FROM python:3.10
 RUN mkdir -p /var/log/supervisor
 RUN apt-get update
 RUN apt install -y supervisor
-#RUN apt install -y python3-pip
 RUN apt install -y libpq-dev
 RUN apt install -y libevent-dev libev-dev libevdev2
 RUN apt clean
