@@ -31,16 +31,9 @@ install: init
 	python setup.py install
 	python setup.py clean
 
-.PHONY: deploy
-deploy: login pull up
-
-.PHONY: pull
-pull: login
-	docker compose pull nginx api
-
 .PHONY: up
 up:
-	docker compose up -d nginx api
+	docker compose up -d
 
 .PHONY: stop
 stop:

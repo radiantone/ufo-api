@@ -25,6 +25,8 @@ services:
     image: ufo/scrape:latest
     env_file:
       - conf/ufo.env
+    depends_on:
+      - mongodb
     links:
       - mongodb
 
