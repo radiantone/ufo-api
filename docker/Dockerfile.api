@@ -32,4 +32,5 @@ RUN update-rc.d -f supervisord remove
 RUN venv/bin/pip uninstall -y pytz
 RUN venv/bin/python setup.py install
 
+
 CMD ["bash", "/opt/ufo/supervisor.sh"]

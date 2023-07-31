@@ -1,0 +1,15 @@
+FROM python:3.10
+
+RUN apt update && apt install -y cron
+
+COPY ./conf/scrape.cron /etc/cron.d/scrape.cron
+RUN chmod 0644 /etc/cron.d/scrape.cron
+RUN crontab /etc/cron.d/scrape.cron
+RUN touch /var/log/cron.log
+RUN pip install scrapy
+RUN mkdir /opt/scrapy
+ADD scrapy /opt/scrapy
+ADD scripts/scrape.sh /opt/scrapy/scrape.sh
+WORKDIR /opt/scrapy/ufo_scraper
+
+CMD cron && tail -f /var/log/cron.log
