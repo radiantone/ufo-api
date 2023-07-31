@@ -122,7 +122,7 @@ def get_token_auth_header():
 
 class SearchService(Resource):
     def get(self):
-        return "Search" + os.environ["UFO_DATA_URL"]
+        return "Unimplemented"
 
 
 search = api.namespace("search", description="Search the UFO database")

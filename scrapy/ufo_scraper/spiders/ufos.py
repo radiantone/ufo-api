@@ -1,10 +1,12 @@
+import os
 import scrapy
+from typing import Any
 
 
 class UfosSpider(scrapy.Spider):
     name = "ufos"
     allowed_domains = ["nuforc.org"]
-    start_urls = ["https://nuforc.org/webreports/ndxloc.html"]
+    start_urls = [os.environ['UFO_DATA_URL']]
 
-    def parse(self, response):
+    def parse(self, response) -> Any:
         print("UFOS", response)

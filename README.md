@@ -41,18 +41,72 @@ Even thought I've included self-signed certificates for localhost access via ngi
 
 Additionally, I've elected to exclude any kind of authorization (OAuth, etc) within the API. Depending on the production setting, this might be handled by the surrounding SSO system rather than within the API process.
 
-Finally, I've not expended much effort in the code/commit documentation side of things due to limited time, but in a real-world setting git commits would contain ticket #'s and meaningful messages for individual files or small file sets.
-
 ## Installation
 
+If you do not have `make` installed, then run 
+```bash
+$ ./bin/depends.sh
+```
 ### Pre-requisites
+
+A linux-like system (preferrably linux, not macos). Windows platform is not supported.
 
 ## Build
 
+Build all the dockers
+```bash
+$ make build
+```
+
 ### Linting & Formatting
 
+Code quality checks and re-formatting.
+
+```bash
+$ make lint
+$ make format
+```
+### Docs
+
+There is a make target to automatically generate docs for the UFO cli, which will launch the docs in google chrome browser when it completes.
+```bash
+$ make docs
+```
 ## Test
 
-## Run
+```bash
+$ make test
+```
 
-## Clean
+## Run
+Bring the docker stack up
+```bash
+$ make up
+```
+
+## Accessing the API
+
+The UFO API runs behind the NGINX proxy which can be accessed here [UFO API](https://localhost/api)
+> NOTE: The certificate for localhos is self-signed and thus your browser will flag it as a security risk. In production a proper CA signed server cert would be used.
+
+## Using the CLI
+
+The UFO cli, `ufo --help` is used to do some basic admin tasks for the project such as launching the API service and browsing the data.
+```bash
+$ ufo --help
+Usage: ufo [OPTIONS] COMMAND [ARGS]...
+
+  UFO CLI to interact with API
+
+Options:
+  --debug  Debug switch
+  --help   Show this message and exit.
+
+Commands:
+  start  Start the UFO API service
+```
+## Stop & Clean
+Stop all the services and clean up any orphaned docker images
+```bash
+$ make stop && make clean && make refresh
+```
