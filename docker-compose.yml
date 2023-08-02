@@ -13,7 +13,7 @@ services:
     ports:
       - 8001:8001
     volumes:
-      - ./conf/supervisord-agent.conf:/etc/supervisor/conf.d/supervisord.conf
+      - ./conf/supervisord-api.conf:/etc/supervisor/conf.d/supervisord.conf
       - ./logs:/opt/ufo/logs
       - ./logs/cron.log:/var/log/cron.log
 
